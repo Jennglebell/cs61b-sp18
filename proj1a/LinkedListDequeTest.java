@@ -8,6 +8,7 @@ public class LinkedListDequeTest {
 			return false;
 		}
 		return true;
+
 	}
 
 	/* Utility method for printing out empty checks. */
