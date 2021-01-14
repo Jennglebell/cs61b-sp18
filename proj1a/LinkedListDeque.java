@@ -5,11 +5,11 @@ public class LinkedListDeque<T> {
 
     public class Node {
         public T item;
-        public Node prior;
+        public Node prev;
         public Node next;
         public Node(T i, Node p, Node n) {
             item = i;
-            prior = p;
+            prev = p;
             next = n;
         }
     }
@@ -22,17 +22,17 @@ public class LinkedListDeque<T> {
     /* Adds an item  of type T to the front of the deque. */
     public void addFisrt(T item) {
         Node front = sentinel.next;
-        front.prior = new Node(item, sentinel, front);
-        sentinel.next = front.prior;
+        front.prev = new Node(item, sentinel, front);
+        sentinel.next = front.prev;
 
         size += 1;
     }
 
     /* Adds an item of Type T to the back of the deque. */
     public void addLast(T item) {
-        Node back = sentinel.prior;
+        Node back = sentinel.prev;
         back.next = new Node(item, back, sentinel);
-        sentinel.prior = back.next;
+        sentinel.prev = back.next;
 
         size += 1;
     }
@@ -65,7 +65,7 @@ public class LinkedListDeque<T> {
 
         size -= 1;
         Node first = sentinel.next;
-        first.next.prior = sentinel;
+        first.next.prev = sentinel;
         sentinel.next = first.next;
         return first.item;
     }
@@ -78,9 +78,9 @@ public class LinkedListDeque<T> {
         }
 
         size -= 1;
-        Node last = sentinel.prior;
-        last.prior.next = sentinel;
-        sentinel.prior = last.prior;
+        Node last = sentinel.prev;
+        last.prev.next = sentinel;
+        sentinel.prev = last.prev;
         return last.item;
     }
 
