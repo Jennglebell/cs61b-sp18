@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class ArrayDeque<T> {
+public class ArrayDeque<T> implements Deque<T> {
 
     private T[] items;
     private int left;
@@ -13,6 +13,7 @@ public class ArrayDeque<T> {
         right = 4;
     }
 
+    @Override
     /* Adds the item of type T to the front of the Deque. */
     public void addFirst(T item) {
         if (isFull()) {
@@ -22,6 +23,7 @@ public class ArrayDeque<T> {
         left = (left - 1 + capacity) % capacity;
     }
 
+    @Override
     /* Adds an item of Type T to the back of the deque. */
     public void addLast(T item) {
         if (isFull()) {
@@ -31,6 +33,7 @@ public class ArrayDeque<T> {
         right = (right + 1 + capacity) % capacity;
     }
 
+    @Override
     /* Returns true if deque is empty, false otherwise. */
     public boolean isEmpty() {
         return (size() == 0);
@@ -41,6 +44,7 @@ public class ArrayDeque<T> {
         return (right - left + capacity) % capacity - 1;
     }
 
+    @Override
     /* Prints the items in the deque from first to last, separated by a space. */
     public void printDeque() {
         if (left < right) {
@@ -57,6 +61,7 @@ public class ArrayDeque<T> {
         }
     }
 
+    @Override
     /* Removes and returns the item at the front of the deque. If no such item exists,
     returns null. */
     public T removeFirst() {
@@ -71,6 +76,7 @@ public class ArrayDeque<T> {
         return first;
     }
 
+    @Override
     /* Removes and returns the item at the back of the deque. If no such item exists,
     returns null. */
     public T removeLast() {
@@ -85,6 +91,7 @@ public class ArrayDeque<T> {
         return last;
     }
 
+    @Override
     /* Gets the item at the given index, where 0 is the front, 1 is the next item,
     and so forth. If no such item exists, returns null. Must not alter the deque! */
     public T get(int index) {
